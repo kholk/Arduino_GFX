@@ -260,7 +260,7 @@ Arduino_GC9503V_RGBPanel *gfx = new Arduino_GC9503V_RGBPanel(bus, GFX_NOT_DEFINE
 #define TFT_DC 3
 #define TFT_RST 2
 #define TFT_BL 1
-#elif defined(ARDUINO_RASPBERRY_PI_PICO) || defined(ARDUINO_RASPBERRY_PI_PICO_W)
+#elif defined(TARGET_RP2040)
 #define TFT_CS 17 // GFX_NOT_DEFINED for display without CS pin
 #define TFT_DC 27
 #define TFT_RST 26
@@ -335,7 +335,7 @@ Arduino_GC9503V_RGBPanel *gfx = new Arduino_GC9503V_RGBPanel(bus, GFX_NOT_DEFINE
 #if defined(ARDUINO_ARCH_NRF52840)
 // Arduino_DataBus *bus = new Arduino_mbedSPI(TFT_DC, TFT_CS);
 Arduino_DataBus *bus = new Arduino_NRFXSPI(TFT_DC, TFT_CS, 13 /* SCK */, 11 /* MOSI */, 12 /* MISO */);
-#elif defined(ARDUINO_RASPBERRY_PI_PICO) || defined(ARDUINO_RASPBERRY_PI_PICO_W)
+#elif defined(TARGET_RP2040)
 Arduino_DataBus *bus = new Arduino_RPiPicoSPI(TFT_DC /* DC */, TFT_CS /* CS */, 18 /* SCK */, 19 /* MOSI */, 16 /* MISO */, spi0 /* spi */);
 #elif defined(ESP32) && (CONFIG_IDF_TARGET_ESP32)
 Arduino_DataBus *bus = new Arduino_ESP32SPI(TFT_DC, TFT_CS, 18 /* SCK */, 23 /* MOSI */, GFX_NOT_DEFINED /* MISO */, VSPI /* spi_num */);
